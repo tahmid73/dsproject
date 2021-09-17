@@ -75,20 +75,29 @@ void printList(Node* node){
 	}
 }
 
-int main(){
-	ofstream file("templates.txt");
-	ifstream readFile("templates.txt");
-	string texts;
-	file<<"Hello world amaro porano jaha chay";
-	file.close();
-	while(getline(readFile,texts));
 
+//saving templates
+void saveFile(Node* node){
+	Node* last;
+	cout<<"\n saveing file";
+	ofstream saving("templates.txt");
+	while(node!=NULL){
+		saving<<node->data<<"\n\n";
+		last=node;
+		node=node->next;
+	}
+
+}
+
+void showTemplate(){
+	
+}
+
+int main(){
 	Node* head=NULL;
-	append(&head,"hi");
-	push(&head,"hello");
-	push(&head,"mayere");
+	append(&head,"");
 	append(&head,"chudi");
-	insertAfter(head->next,"tore");
+	saveFile(head);	
 	printList(head);
 
 	
