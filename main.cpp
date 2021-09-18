@@ -5,6 +5,7 @@ using namespace std;
 //node
 class Node{
 	public:
+	int n;
 	string data;
 	Node* next;
 	Node* prev;
@@ -12,7 +13,7 @@ class Node{
 
 
 //push
-void push(Node** ref,string newData){
+void push(Node** ref,string newData,int n){
 	Node* newNode=new Node();
 	newNode->data=newData;
 	newNode->next=(*ref);
@@ -38,10 +39,11 @@ void insertAfter(Node* prevNode,string newData){
 	}
 }
 
-void append(Node** ref,string newData){
+void append(Node** ref,string newData,int newN){
 	Node* newNode=new Node();
 	Node* last = * ref;
 	newNode->data=newData;
+	newNode->n=newN;
 	newNode->next=NULL;
 	if(*ref==NULL){
 		newNode->prev=NULL;
@@ -60,26 +62,27 @@ void append(Node** ref,string newData){
 //for printing template
 void printList(Node* node){
 	Node* last;
-	cout<<"\n forward direction";
+	cout<<"\n forward direction\n\n";
 	while(node!=NULL)
 	{
 		cout<<" "<<node->data<<" ";
 		last = node;
 		node = node->next;
 	}
-	cout<<"\n reverse direction";
+	cout<<"\n reverse direction\n\n";
 	while(last!=NULL)
 	{
 		cout<<" "<<last->data<<" ";
 		last = last->prev;
 	}
+	cout<<endl;
 }
 
 
 //saving templates
 void saveFile(Node* node){
 	Node* last;
-	cout<<"\n saveing file";
+	cout<<"\nsaving file\n";
 	ofstream saving("templates.txt");
 	while(node!=NULL){
 		saving<<node->data<<"\n\n";
@@ -89,16 +92,30 @@ void saveFile(Node* node){
 
 }
 
-void showTemplate(){
-	
+void showTemplates(Node* node){
+	int a;
+	cout<<"Press 1 \nPress 2 \nPress 3\nPress 4\n";
+	cin>>a;
+	Node* last;
+	while(node!=NULL){
+		if(node->n==a){
+			cout<<node->data;
+			break;
+		}
+		last=node;
+		node=node->next;
+	}
 }
 
 int main(){
 	Node* head=NULL;
-	append(&head,"");
-	append(&head,"chudi");
-	saveFile(head);	
-	printList(head);
-
+	append(&head,"are vaya",1);
+	append(&head,"chudi tomare",2);
+	append(&head,"mayere chudi",3);
+	append(&head,"choda chodir mayere chudi",4);
+	//append(&head,"Subject:Congragulating on brillian success.\nHi name,\nI am glad to know that you are well. I heared about your promotion.I want to congratulate you.\nFrom name,\nDate 20/Semptember");
+	saveFile(head);
+	//printList(head);
+	showTemplates(head);
 	
 }
