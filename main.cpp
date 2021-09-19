@@ -111,13 +111,11 @@ void showTemplates(Node* node){
 	
 void display(Node* node){
 		Node* last;
-		int a;
-		cout<<node;
-		cout<<"Press 1 to see next\nPress 2 to see previous\nPress 0 to exit\n";
-		cin>>a;
-		while(a==0 && node!=NULL){
+		int a=3;
+		while(a!=0 && node!=NULL){
+		cout<<"\nPress 1 to see next\nPress 2 to see previous\nPress 0 to exit\n";
+			cin>>a;
 		if(a==1){ 
-			cout<<"hello world";
 			node=node->next;
 			cout<<node->data;
 		}
@@ -131,14 +129,11 @@ void display(Node* node){
 }
 
 
-
+ 
 int main(){
 	Node* head=NULL;
-	append(&head,"are vaya",1);
-	append(&head,"chudi tomare",2);
-	append(&head,"mayere chudi",3);
-	append(&head,"choda chodir mayere chudi",4);
-	//append(&head,"Subject:Congragulating on brillian success.\nHi name,\nI am glad to know that you are well. I heared about your promotion.I want to congratulate you.\nFrom name,\nDate 20/Semptember");
+	string leave,congratulate,welcome;
+	append(&head,"Subject:Congragulating on brillian success.\nHi name,\nI am glad to know that you are well. I heared about your promotion.I want to congratulate you.\nFrom name,\nDate 20/Semptember",1);
 	saveFile(head);
 	//printList(head);
 	showTemplates(head);
