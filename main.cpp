@@ -11,6 +11,7 @@ class Node{
 	Node* prev;
 };
 
+void display(Node* node);
 
 //push
 void push(Node** ref,string newData,int n){
@@ -75,7 +76,6 @@ void printList(Node* node){
 		cout<<" "<<last->data<<" ";
 		last = last->prev;
 	}
-	cout<<endl;
 }
 
 
@@ -97,15 +97,40 @@ void showTemplates(Node* node){
 	cout<<"Press 1 \nPress 2 \nPress 3\nPress 4\n";
 	cin>>a;
 	Node* last;
-	while(node!=NULL){
+		while(node!=NULL){
 		if(node->n==a){
-			cout<<node->data;
+			cout<<node->data<<endl;
 			break;
 		}
 		last=node;
 		node=node->next;
+		cout<<endl;
 	}
+		display(node);
 }
+	
+void display(Node* node){
+		Node* last;
+		int a;
+		cout<<node;
+		cout<<"Press 1 to see next\nPress 2 to see previous\nPress 0 to exit\n";
+		cin>>a;
+		while(a==0 && node!=NULL){
+		if(a==1){ 
+			cout<<"hello world";
+			node=node->next;
+			cout<<node->data;
+		}
+		else if(a==2){
+			node=node->prev;
+			cout<<node->data;
+		}
+		else if(a==0)
+			showTemplates(node);
+		}
+}
+
+
 
 int main(){
 	Node* head=NULL;
